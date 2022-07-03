@@ -1,0 +1,29 @@
+
+/* SPDX-License-Identifier: Apache-2.0 */
+
+&i2c1 {
+
+    /*mpu6050@68 {
+		compatible = "invensense,mpu6050";
+		reg = <0x68>;
+		status = "okay";
+		label = "MPU6050";
+		int-gpios = <&gpiob 8 GPIO_ACTIVE_HIGH>;
+	};*/
+    
+
+    // https://docs.zephyrproject.org/latest/build/dts/api/bindings/sensor/st%2Cvl53l0x.html#dtbinding-st-vl53l0x
+    // https://www.st.com/resource/en/datasheet/vl53l0x.pdf
+
+    // TBC: datasheet specifies 0x52 for the address 
+    // TBC: datasheet XSHUT (shutdown pin) is active low
+    
+    vl53l0x@29 {
+    //    vl53l0x0: vl53l0x@52 {
+            compatible = "st,vl53l0x";
+            reg = <0x29>;
+            //reg = <0x52>;
+            label = "VL53L0X";
+            xshut-gpios = <&gpioc 7 GPIO_ACTIVE_HIGH>;
+	};
+};

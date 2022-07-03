@@ -67,7 +67,7 @@
             "cwd": "${workspaceRoot}",
             "executable": "build/zephyr/zephyr.elf",
             "device": "stm32f446ze",
-            "interface": "swd",
+            //"interface": "swd",
             //"armToolchainPath": "${HOME}/zephyr-sdk-0.14.2/arm-zephyr-eabi/bin",
 		    //"armToolchainPath": "${env:GNUARMEMB_TOOLCHAIN_PATH}/bin",
             "configFiles": [

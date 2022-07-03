@@ -33,8 +33,10 @@
 			"args": [
 				"build",
 				"-p", "auto",
-				"-b", "nucleo_f103rb",
+				//"-b", "nucleo_f103rb",
+				"-b", "nucleo_f446ze",
 				"application-10dof"
+				//"zephyr/samples/basic/blinky"
 			],
 			"promptOnClose": false,
 			"presentation": {
