@@ -1,0 +1,6 @@
+zephyr
+build
+bootloader
+tools
+modules
+.vscode/.cortex-debug.registers.state.json

@@ -1,0 +1,54 @@
+
+/* SPDX-License-Identifier: Apache-2.0 */
+
+/*/ {
+	servo: servo {
+		compatible = "pwm-servo";
+		pwms = <&sw_pwm 0 PWM_MSEC(20) PWM_POLARITY_NORMAL>;
+		min-pulse = <PWM_USEC(700)>;
+		max-pulse = <PWM_USEC(2500)>;
+	};
+    
+    pwmleds {
+        compatible = "pwm-leds";
+        green_pwm_led: green_pwm_led {
+            pwms = <&pwm4 2 15625000 PWM_POLARITY_NORMAL>;
+        };
+    };
+
+    aliases {
+        pwmled0 = &green_pwm_led;
+    };
+
+};*/
+
+
+&i2c1 {
+	//pinctrl-0 = <&i2c1_scl_remap1_pb8 &i2c1_sda_remap1_pb9>;
+	//pinctrl-names = "default";
+	//status = "okay";
+	//clock-frequency = <I2C_BITRATE_FAST>;
+    /*mpu6050@68 {
+		compatible = "invensense,mpu6050";
+		reg = <0x68>;
+		status = "okay";
+		label = "MPU6050";
+		int-gpios = <&gpiob 8 GPIO_ACTIVE_HIGH>;
+	};*/
+    
+
+    // https://docs.zephyrproject.org/latest/build/dts/api/bindings/sensor/st%2Cvl53l0x.html#dtbinding-st-vl53l0x
+    // https://www.st.com/resource/en/datasheet/vl53l0x.pdf
+
+    // TBC: datasheet specifies 0x52 for the address 
+    // TBC: datasheet XSHUT (shutdown pin) is active low
+    
+    vl53l0x@29 {
+    //    vl53l0x0: vl53l0x@52 {
+            compatible = "st,vl53l0x";
+            reg = <0x29>;
+            //reg = <0x52>;
+            label = "VL53L0X";
+            xshut-gpios = <&gpioc 7 GPIO_ACTIVE_HIGH>;
+	};
+};
