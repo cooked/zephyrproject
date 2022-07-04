@@ -9,7 +9,7 @@
 #include <stdio.h>
 #include <zephyr/sys/printk.h>
 
-#define SLEEP_TIME_MS   1000
+#define SLEEP_TIME_MS   200
 
 /* The devicetree node identifier for the "led0" alias. */
 #define LED0_NODE DT_ALIAS(led0)
@@ -25,6 +25,7 @@ void main(void)
 	// from sensors samples
 	const struct device *dev = device_get_binding(DT_LABEL(DT_INST(0, st_vl53l0x)));
 	struct sensor_value value;
+	struct sensor_value prox;
 
 	int ret;
 
@@ -56,10 +57,9 @@ void main(void)
 			printk("sensor_sample_fetch failed ret %d\n", ret);
 			return;
 		}
-		ret = sensor_channel_get(dev, SENSOR_CHAN_PROX, &value);
-		printk("prox is %d\n", value.val1);
+		ret = sensor_channel_get(dev, SENSOR_CHAN_PROX, &prox);
 		ret = sensor_channel_get(dev, SENSOR_CHAN_DISTANCE, &value);
-		printf("distance is %.3fm\n", sensor_value_to_double(&value));
+		printf("%.3f, %d\n", sensor_value_to_double(&value), prox.val1);
 
 		k_msleep(SLEEP_TIME_MS);
 	}

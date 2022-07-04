@@ -12,7 +12,9 @@
 		"files.associations": {
 			"*.dict": "json",
 			"device.h": "c",
-			"sensor.h": "c"
+			"sensor.h": "c",
+			"icm42605_reg.h": "c",
+			"icm42605_setup.h": "c"
 		},
 		"cortex-debug.armToolchainPath": "/usr/bin",
 		"cortex-debug.armToolchainPrefix": "arm-none-eabi",
