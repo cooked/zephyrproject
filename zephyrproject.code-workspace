@@ -1,10 +1,10 @@
 {
 	"folders": [
 		{
-			"path": "../data-node-firmware"
+			"path": "."
 		},
 		{
-			"path": "."
+			"path": "../data-node-firmware-2"
 		}
 	],
 	"settings": {
@@ -14,17 +14,26 @@
 			"device.h": "c",
 			"sensor.h": "c",
 			"icm42605_reg.h": "c",
-			"icm42605_setup.h": "c"
+			"icm42605_setup.h": "c",
+			"gpio.h": "c",
+			"ixm42xxx.h": "c",
+			"ixm42xxx_util.h": "c",
+			"iim42652_setup.h": "c",
+			"ixm42xxx_i2c.h": "c"
 		},
 		"cortex-debug.armToolchainPath": "/usr/bin",
 		"cortex-debug.armToolchainPrefix": "arm-none-eabi",
 		"cortex-debug.gdbPath": "gdb-multiarch",
 		"cortex-debug.openocdPath.linux": "../zephyr-sdk-0.14.2/sysroots/x86_64-pokysdk-linux/usr/bin/openocd",
 		"terminal.integrated.env.linux": {
-				"ZEPHYR_BASE": "${workspaceFolder}/zephyr",
+				//"ZEPHYR_BASE": "${workspaceFolder}/zephyr",
 				//"ZEPHYR_TOOLCHAIN_VARIANT": "gnuarmemb",
 				//"GNUARMEMB_TOOLCHAIN_PATH": "/usr/bin/",
 				//"PATH": "$ZEPHYR_BASE/scripts:${env:PATH}"
-		}
+		},
+		"nrf-connect.applications": [
+			"${workspaceFolder:zephyrproject}/application-test-local",
+			"${workspaceFolder:zephyrproject}/application-green-blink"
+		]
 	}
 }

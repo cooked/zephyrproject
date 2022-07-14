@@ -1,0 +1,15 @@
+# IIM42652 Compact 6-Axis MotionTracking MEMS Device for Industrial Applications configuration options
+
+# Copyright (c) 2022 Anything Connected
+# SPDX-License-Identifier: Apache-2.0
+
+menuconfig IIM42652
+	bool "IIM42652 Compact 6-Axis MotionTracking Device for Industrial Applications"
+	depends on I2C
+	help
+	  Enable driver for IIM42652 I2C-based six-axis motion tracking device.
+
+#module = IIM42652
+#module-str = iim42652
+
+#source "subsys/logging/Kconfig.template.log_config"

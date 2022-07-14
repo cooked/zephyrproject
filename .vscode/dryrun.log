@@ -1,0 +1,6 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory '/home/stefano/zephyrproject'
+make: Leaving directory '/home/stefano/zephyrproject'
+ 
+make: *** No targets specified and no makefile found.  Stop.
+

@@ -73,6 +73,42 @@
             "configFiles": [
                  "zephyr/boards/arm/nucleo_f446ze/support/openocd.cfg"
                     ]
-        }
+        },
+
+        {
+			"name": "application-test thingy91",
+			"preLaunchTask": "Build application-test thingy91",
+			"cwd": "${workspaceRoot}",
+			"executable": "nrf_connect_sdk/zephyr/samples/hello_world/build/zephyr/zephyr.elf",
+			"interface": "swd",
+			"request": "launch",
+			"type": "cortex-debug",
+			"servertype": "jlink",
+			"serverpath": "/opt/SEGGER/JLink/JLinkGDBServerCLExe",
+			"rtos": "Zephyr",
+			"device": "nRF9160_xxAA",
+			"boardId": "",
+			"runToEntryPoint": "main",
+			"svdFile": "${env:BASE_DIR}/nrf_connect_sdk/modules/hal/nordic/nrfx/mdk/nrf9160.svd",
+			"showDevDebugOutput": true,
+			"showDevDebugTimestamps": true,
+			// "preLaunchCommands": [
+			// 	"file ${workspaceRoot}/nrf91_application/build/spm/zephyr/zephyr.elf",
+			// 	"load",
+			// 	"enable breakpoint",
+			// 	"monitor reset"
+			// ],
+			"rttConfig": {
+				"enabled": true,
+				"address": "auto",
+				"decoders": [
+					{
+						"label": "Segger RTT Logs",
+						"port": 0,
+						"type": "console"
+					}
+				]
+			}
+		},
     ]
 }
