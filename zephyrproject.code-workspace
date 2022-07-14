@@ -31,9 +31,6 @@
 				//"GNUARMEMB_TOOLCHAIN_PATH": "/usr/bin/",
 				//"PATH": "$ZEPHYR_BASE/scripts:${env:PATH}"
 		},
-		"nrf-connect.applications": [
-			"${workspaceFolder:zephyrproject}/application-test-local",
-			"${workspaceFolder:zephyrproject}/application-green-blink"
-		]
+		"nrf-connect.applications": []
 	}
 }
