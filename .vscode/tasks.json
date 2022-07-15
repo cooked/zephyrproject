@@ -4,11 +4,18 @@
 	"version": "2.0.0",
 	"tasks": [
 		{
-			"label": "Build custom nRF91 application",
-			"detail": "Builds our custom nRF91 application",
+			"label": "Build thingy91_nrf9160ns app",
+			"detail": "Builds thingy91_nrf9160ns app",
 			"type": "shell",
 			"group": "build",
-			"command": "/app/build_util_scripts/compile_custom_nrf91_application.sh",
+			"command": "west",
+			"args": [
+				"build",
+				"-p", "auto",
+				"-b", "thingy91_nrf9160ns",
+				"-d", "application-test-local/build",
+				"application-test-local"
+			],
 			"promptOnClose": false,
 			"presentation": {
 				"echo": true,
@@ -19,7 +26,7 @@
 				"clear": true
 			},
 			"options": {
-				"cwd": "/app/build_util_scripts"
+				"cwd": "${workspaceFolder}"
 			}
 		},
 		{
