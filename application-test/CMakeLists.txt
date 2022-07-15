@@ -17,7 +17,7 @@ find_package(Zephyr REQUIRED HINTS $ENV{ZEPHYR_BASE})
 
 project(application-test-local)
 
-zephyr_library_include_directories(.)
+#zephyr_library_include_directories(.)
 
 zephyr_include_directories(src)
 

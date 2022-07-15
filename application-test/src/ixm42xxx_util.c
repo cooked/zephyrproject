@@ -50,7 +50,7 @@ static int ixm42xxx_attr_set(const struct device *dev,
 			     enum sensor_attribute attr,
 			     const struct sensor_value *val)
 {
-	struct ixm42xxx_data *drv_data = dev->data;
+	struct iim42652_config *drv_config = dev->config;
 
 	__ASSERT_NO_MSG(val != NULL);
 
@@ -64,7 +64,7 @@ static int ixm42xxx_attr_set(const struct device *dev,
 				LOG_ERR("Incorrect sampling value");
 				return -EINVAL;
 			} else {
-				drv_data->accel_hz = val->val1;
+				drv_config->accel_hz = val->val1;
 			}
 		} else if (attr == SENSOR_ATTR_FULL_SCALE) {
 			if (val->val1 < ACCEL_FS_16G ||
@@ -72,7 +72,7 @@ static int ixm42xxx_attr_set(const struct device *dev,
 				LOG_ERR("Incorrect fullscale value");
 				return -EINVAL;
 			} else {
-				drv_data->accel_sf = val->val1;
+				drv_config->accel_fs = val->val1;
 			}
 		} else {
 			LOG_ERR("Not supported ATTR");
@@ -89,7 +89,7 @@ static int ixm42xxx_attr_set(const struct device *dev,
 				LOG_ERR("Incorrect sampling value");
 				return -EINVAL;
 			} else {
-				drv_data->gyro_hz = val->val1;
+				drv_config->gyro_hz = val->val1;
 			}
 		} else if (attr == SENSOR_ATTR_FULL_SCALE) {
 			if (val->val1 < GYRO_FS_2000DPS ||
@@ -97,7 +97,7 @@ static int ixm42xxx_attr_set(const struct device *dev,
 				LOG_ERR("Incorrect fullscale value");
 				return -EINVAL;
 			} else {
-				drv_data->gyro_sf = val->val1;
+				drv_config->gyro_fs = val->val1;
 			}
 		} else {
 			LOG_ERR("Not supported ATTR");
@@ -118,7 +118,7 @@ static int ixm42xxx_attr_get(const struct device *dev,
 			     enum sensor_attribute attr,
 			     struct sensor_value *val)
 {
-	const struct ixm42xxx_data *drv_data = dev->data;
+	const struct iim42652_config *drv_config = dev->config;
 
 	__ASSERT_NO_MSG(val != NULL);
 
@@ -128,9 +128,9 @@ static int ixm42xxx_attr_get(const struct device *dev,
 	case SENSOR_CHAN_ACCEL_Z:
 	case SENSOR_CHAN_ACCEL_XYZ:
 		if (attr == SENSOR_ATTR_SAMPLING_FREQUENCY) {
-			val->val1 = drv_data->accel_hz;
+			val->val1 = drv_config->accel_hz;
 		} else if (attr == SENSOR_ATTR_FULL_SCALE) {
-			val->val1 = drv_data->accel_sf;
+			val->val1 = drv_config->accel_fs;
 		} else {
 			LOG_ERR("Not supported ATTR");
 			return -EINVAL;
@@ -142,9 +142,9 @@ static int ixm42xxx_attr_get(const struct device *dev,
 	case SENSOR_CHAN_GYRO_Z:
 	case SENSOR_CHAN_GYRO_XYZ:
 		if (attr == SENSOR_ATTR_SAMPLING_FREQUENCY) {
-			val->val1 = drv_data->gyro_hz;
+			val->val1 = drv_config->gyro_hz;
 		} else if (attr == SENSOR_ATTR_FULL_SCALE) {
-			val->val1 = drv_data->gyro_sf;
+			val->val1 = drv_config->gyro_fs;
 		} else {
 			LOG_ERR("Not supported ATTR");
 			return -EINVAL;

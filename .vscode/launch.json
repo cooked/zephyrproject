@@ -14,7 +14,7 @@
             "servertype": "jlink"
         },
 
-        // jlink 
+        // jlink
         {
             "name": "Bootloader",
             "cwd": "${workspaceRoot}",
@@ -37,7 +37,7 @@
             "runToEntryPoint": "main",
             "servertype": "jlink"
         },
-        
+
         // board_runner_args(jlink "--device=STM32L475VG" "--speed=4000")
 
 
@@ -77,9 +77,11 @@
 
         {
 			"name": "application-test thingy91",
-			"preLaunchTask": "Build application-test thingy91",
-			"cwd": "${workspaceRoot}",
-			"executable": "nrf_connect_sdk/zephyr/samples/hello_world/build/zephyr/zephyr.elf",
+            // task to run for building
+			"preLaunchTask": "Build thingy91_nrf9160ns app",
+
+            "cwd": "${workspaceRoot}",
+			"executable": "application-test/build/zephyr/zephyr.elf",
 			"interface": "swd",
 			"request": "launch",
 			"type": "cortex-debug",
@@ -89,8 +91,9 @@
 			"device": "nRF9160_xxAA",
 			"boardId": "",
 			"runToEntryPoint": "main",
-			"svdFile": "${env:BASE_DIR}/nrf_connect_sdk/modules/hal/nordic/nrfx/mdk/nrf9160.svd",
-			"showDevDebugOutput": true,
+            // TODO: no SVDs at that location
+			"svdFile": "${env:NCS_BASE}/modules/hal/nordic/nrfx/mdk/nrf9160.svd",
+			"showDevDebugOutput": "raw",
 			"showDevDebugTimestamps": true,
 			// "preLaunchCommands": [
 			// 	"file ${workspaceRoot}/nrf91_application/build/spm/zephyr/zephyr.elf",

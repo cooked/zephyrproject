@@ -1,6 +1,0 @@
-description: |
-	DeviceTree binding for the TDK Invensense IIM42652 6-DOF accelerometer + gyrometer
-compatible: "invensense,iim42652"
-on-bus: i2c
-include: i2c-device.yaml
-# properties:

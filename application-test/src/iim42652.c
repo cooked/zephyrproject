@@ -28,16 +28,16 @@ LOG_MODULE_REGISTER(IIM42652, CONFIG_SENSOR_LOG_LEVEL);
 
 // TODO: move to kconfig or yaml ?
 // TODO: check on datasheet if these value are ok for our sensor
-static const uint16_t iim42652_gyro_sensitivity_x10[] = {
+/*static const uint16_t iim42652_gyro_sensitivity_x10[] = {
 	1310, 655, 328, 164
-};
+};*/
 
 
 static int iim42652_channel_get(const struct device *dev,
 				enum sensor_channel chan,
 				struct sensor_value *val)
 {
-	const struct ixm42xxx_data *drv_data = dev->data;
+	const struct iim42652_data *drv_data = dev->data;
 
 	switch (chan) {
 	case SENSOR_CHAN_ACCEL_XYZ:
@@ -96,18 +96,19 @@ static int iim42652_sample_fetch(const struct device *dev,
 {
 	int result = 0;
 	uint16_t fifo_count = 0;
-	struct ixm42xxx_data *drv_data = dev->data;
+	struct iim42652_data *drv_data = dev->data;
 
 	// TODO: read i2c
 
 	// Read INT_STATUS (0x45) and FIFO_COUNTH(0x46), FIFO_COUNTL(0x47)
-	result = inv_spi_read(MPUREG_INT_STATUS, drv_data->fifo_data, 3);
+	//result = inv_spi_read(MPUREG_INT_STATUS, drv_data->fifo_data, 3);
 
 	if (drv_data->fifo_data[0] & BIT_INT_STATUS_DRDY) {
 		fifo_count = (drv_data->fifo_data[1] << 8)
 			+ (drv_data->fifo_data[2]);
-		result = inv_spi_read(MPUREG_FIFO_DATA, drv_data->fifo_data,
-				      fifo_count);
+
+		//result = inv_spi_read(MPUREG_FIFO_DATA, drv_data->fifo_data,
+		//		      fifo_count);
 
 		/* FIFO Data structure
 		 * Packet 1 : FIFO Header(1), AccelX(2), AccelY(2),
@@ -178,8 +179,8 @@ static int iim42652_sample_fetch(const struct device *dev,
 	return 0;
 }
 
-static int iim42652_data_init(struct ixm42xxx_data *data,
-			      const struct ixm42xxx_config *cfg)
+static int iim42652_data_init(struct iim42652_data *data,
+			      const struct iim42652_config *cfg)
 {
 	data->accel_x = 0;
 	data->accel_y = 0;
@@ -188,11 +189,11 @@ static int iim42652_data_init(struct ixm42xxx_data *data,
 	data->gyro_x = 0;
 	data->gyro_y = 0;
 	data->gyro_z = 0;
-	data->accel_hz = cfg->accel_hz;
-	data->gyro_hz = cfg->gyro_hz;
+	//data->accel_hz = cfg->accel_hz;
+	//data->gyro_hz = cfg->gyro_hz;
 
-	data->accel_sf = cfg->accel_fs;
-	data->gyro_sf = cfg->gyro_fs;
+	//data->accel_sf = cfg->accel_fs;
+	//data->gyro_sf = cfg->gyro_fs;
 
 	data->tap_en = false;
 	data->sensor_started = false;
@@ -202,8 +203,8 @@ static int iim42652_data_init(struct ixm42xxx_data *data,
 
 static int iim42652_init(const struct device *dev)
 {
-	struct ixm42xxx_data *drv_data = dev->data;
-	const struct ixm42xxx_config *cfg = dev->config;
+	struct iim42652_data *drv_data = dev->data;
+	const struct iim42652_config *cfg = dev->config;
 
 	// TODO: ported to i2c, check if working
 	drv_data->i2c = device_get_binding(cfg->i2c_label);
@@ -254,7 +255,6 @@ static const struct sensor_driver_api iim42652_driver_api = {
 	static const struct iim42652_config iim42652_cfg_##index = {	\
 		.i2c_label = DT_INST_BUS_LABEL(index),			\
 		.addr = DT_INST_REG_ADDR(index),			\
-		.slave = DT_INST_REG_ADDR(index),			\
 		.accel_hz = DT_INST_PROP(index, accel_hz),		\
 		.gyro_hz = DT_INST_PROP(index, gyro_hz),		\
 		.accel_fs = DT_ENUM_IDX(DT_DRV_INST(index), accel_fs),	\
@@ -264,7 +264,7 @@ static const struct sensor_driver_api iim42652_driver_api = {
 // TODO: find out about the first NULL below .... pm_control_fn (Power management) is it useful for our sensor?
 #define IIM42652_INIT(index)						\
 	IIM42652_DEFINE_CONFIG(index);					\
-	static struct ixm42xxx_data iim42652_driver_##index;		\
+	static struct iim42652_data iim42652_driver_##index;		\
 	DEVICE_DT_INST_DEFINE(index, iim42652_init,			\
 			    NULL,					\
 			    &iim42652_driver_##index,			\

@@ -11,10 +11,10 @@
 			"command": "west",
 			"args": [
 				"build",
-				"-p", "auto",
+				"-p", "always",
 				"-b", "thingy91_nrf9160ns",
-				"-d", "application-test-local/build",
-				"application-test-local"
+				"-d", "application-test/build",
+				"application-test"
 			],
 			"promptOnClose": false,
 			"presentation": {
@@ -29,6 +29,7 @@
 				"cwd": "${workspaceFolder}"
 			}
 		},
+
 		{
 			"label": "Build stm32f103rb",
 			"type": "shell",
@@ -39,11 +40,9 @@
 			"command": "west",
 			"args": [
 				"build",
-				"-p", "auto",
-				//"-b", "nucleo_f103rb",
+				"-p", "always",
 				"-b", "nucleo_f446ze",
 				"application-10dof"
-				//"zephyr/samples/basic/blinky"
 			],
 			"promptOnClose": false,
 			"presentation": {

@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Thu Jul 14 13:11:07 2022
+# Make data base, printed on Fri Jul 15 13:08:10 2022
 
 # Variables
 
@@ -33,7 +33,7 @@ PWD = /home/stefano/zephyrproject
 # automatic
 %D = $(patsubst %/,%,$(dir $%))
 # environment
-XDG_DATA_DIRS = /usr/share/xfce4:/home/stefano/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share:/usr/share:/usr/share:/var/lib/snapd/desktop
+XDG_DATA_DIRS = /usr/share/xfce4:/home/stefano/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share:/usr/share:/usr/share
 # automatic
 ^D = $(patsubst %/,%,$(dir $^))
 # automatic
@@ -61,7 +61,7 @@ APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
 # environment
 MFLAGS = -pqrR
 # environment
-SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
+SSH_AUTH_SOCK = /tmp/ssh-iaGbB81xKFsH/agent.792
 # default
 .SHELLFLAGS := -c
 # environment
@@ -69,19 +69,19 @@ XDG_CONFIG_DIRS = /etc/xdg
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # environment
-XDG_SESSION_DESKTOP = xfce
+XDG_SESSION_DESKTOP = lightdm-xsession
 # makefile
 MAKEFILE_LIST := 
 # automatic
 @F = $(notdir $@)
 # environment
-VSCODE_PID = 10390
+VSCODE_PID = 1081
 # environment
 XDG_SESSION_TYPE = x11
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # environment
-SESSION_MANAGER = local/debian:@/tmp/.ICE-unix/1545,unix/debian:/tmp/.ICE-unix/1545
+SESSION_MANAGER = local/asus:@/tmp/.ICE-unix/792,unix/asus:/tmp/.ICE-unix/792
 # automatic
 *F = $(notdir $*)
 # environment
@@ -101,15 +101,13 @@ MAKECMDGOALS := all
 # environment
 PLATFORMIO_CALLER = vscode
 # environment
-XMODIFIERS = @im=ibus
-# environment
 SHLVL = 0
 # environment
 MAKELEVEL := 0
 # default
 MAKE = $(MAKE_COMMAND)
 # environment
-PATH = /home/stefano/.local/bin:/home/stefano/.local/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/snap/bin
+PATH = /home/stefano/.local/bin:/home/stefano/bin:/home/stefano/.local/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games
 # default
 MAKEFILES := 
 # environment
@@ -121,8 +119,6 @@ LANGUAGE = en_US:en
 # environment
 XDG_SEAT = seat0
 # environment
-GTK_IM_MODULE = ibus
-# environment
 NO_PROXY = 127.0.0.1
 # environment
 XDG_CURRENT_DESKTOP = XFCE
@@ -133,17 +129,15 @@ LS_COLORS =
 # environment
 XDG_SEAT_PATH = /org/freedesktop/DisplayManager/Seat0
 # environment
-DESKTOP_SESSION = xfce
+DESKTOP_SESSION = lightdm-xsession
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = XFCE
 # 'override' directive
 GNUMAKEFLAGS := 
 # environment
-CLUTTER_IM_MODULE = ibus
-# environment
 LOGNAME = stefano
 # environment
-PLATFORMIO_PATH = /home/stefano/.platformio/python3/bin:/home/stefano/.local/bin:/home/stefano/.local/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/snap/bin
+PLATFORMIO_PATH = /home/stefano/.platformio/penv/bin:/home/stefano/.platformio/penv:/home/stefano/.platformio/python3/bin:/home/stefano/.local/bin:/home/stefano/bin:/home/stefano/.local/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games
 # environment
 XDG_VTNR = 7
 # makefile
@@ -157,13 +151,11 @@ GTK_MODULES = gail:atk-bridge
 # default
 MAKE_VERSION := 4.3
 # environment
-SSH_AGENT_PID = 1609
+SSH_AGENT_PID = 842
 # environment
 _ = /usr/share/code/code
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
-# environment
-GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
 XDG_SESSION_CLASS = user
 # environment
@@ -172,8 +164,6 @@ VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 PLATFORMIO_IDE = 2.5.0
 # environment
 HOME = /home/stefano
-# environment
-QT_IM_MODULE = ibus
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
@@ -195,9 +185,9 @@ XDG_GREETER_DATA_DIR = /var/lib/lightdm/data/stefano
 # environment
 XDG_MENU_PREFIX = xfce-
 # environment
-GDMSESSION = xfce
+GDMSESSION = lightdm-xsession
 # variable set hash-table stats:
-# Load=92/1024=9%, Rehash=0, Collisions=3/119=3%
+# Load=87/1024=8%, Rehash=0, Collisions=2/114=2%
 
 # Pattern-specific Variable Values
 
@@ -205,9 +195,9 @@ GDMSESSION = xfce
 
 # Directories
 
-# . (device 66305, inode 22863874): 16 files, no impossibilities.
+# . (device 2049, inode 2655743): 12 files, no impossibilities.
 
-# 16 files, no impossibilities in 1 directories.
+# 12 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -257,12 +247,12 @@ GNUmakefile:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 24 / storage = 292 B / avg = 12 B
-# current buf: size = 8162 B / used = 292 B / count = 24 / avg = 12 B
+# strcache buffers: 1 (0) / strings = 20 / storage = 255 B / avg = 12 B
+# current buf: size = 8162 B / used = 255 B / count = 20 / avg = 12 B
 
-# strcache performance: lookups = 27 / hit rate = 11%
+# strcache performance: lookups = 23 / hit rate = 13%
 # hash-table stats:
-# Load=24/8192=0%, Rehash=0, Collisions=0/27=0%
-# Finished Make data base on Thu Jul 14 13:11:07 2022
+# Load=20/8192=0%, Rehash=0, Collisions=0/23=0%
+# Finished Make data base on Fri Jul 15 13:08:10 2022
 
  

@@ -16,6 +16,12 @@
 		"devicetree.zephyr": "${env:NRF_CONNECT_SDK_DIR}/zephyr",
 		"cortex-debug.JLinkGDBServerPath.linux": "/opt/SEGGER/JLink/JLinkGDBServerCLExe",
 
+		// SC: from old workspace
+		//"cortex-debug.armToolchainPath": "/usr/bin",
+		//"cortex-debug.armToolchainPrefix": "arm-none-eabi",
+		//"cortex-debug.gdbPath": "gdb-multiarch",
+		//"cortex-debug.openocdPath.linux": "../zephyr-sdk-0.14.2/sysroots/x86_64-pokysdk-linux/usr/bin/openocd",
+
 		// You're going to use tabs, Mr. Anderson. Whether you want to or not.
 		"editor.insertSpaces": false,
 		"editor.tabSize": 4,
@@ -30,10 +36,6 @@
 		"files.trimTrailingWhitespace": true,
 		"diffEditor.ignoreTrimWhitespace": false,
 		"rewrap.autoWrap.enabled": true,
-		"nrf-connect.applications": [
-			"${workspaceFolder}/application-test-local",
-			"${workspaceFolder}/application-green-blink"
-		],
 		//"devicetree.defaultBoard": "nrf9160dk_nrf9160ns",
 
 		//"nrf-connect.topdir": "${env:NRF_CONNECT_SDK_DIR}",
@@ -68,18 +70,30 @@
 			//"ZEPHYR_TOOLCHAIN_VARIANT": "gnuarmemb",
 			//"GNUARMEMB_TOOLCHAIN_PATH": "/usr/bin/",
 			//"PATH": "$ZEPHYR_BASE/scripts:${env:PATH}"
+			"ZEPHYR_BASE": "/home/stefano/ncs/zephyr"
 		},
-		"terminal.integrated.env.osx":{
-			"ZEPHYR_BASE": "${env:HOME}/ncs/zephyr"
-			//"ZEPHYR_BASE": "/User/stefanocottafavi/ncs/zephyr"
-		},
-		"nrf-connect.topdir": "${userHome}/ncs",
-		"nrf-connect.enableTelemetry": true,
+		//"terminal.integrated.env.osx":{
+		//	"ZEPHYR_BASE": "${env:HOME}/ncs/zephyr"
+		//	//"ZEPHYR_BASE": "/User/stefanocottafavi/ncs/zephyr"
+		//},
+		"nrf-connect.topdir": "${nrf-connect.sdk:1.6.1}",
+		"nrf-connect.enableTelemetry": false,
 		"nrf-connect.west.env": {
 			"$base": "terminal",
-			"ZEPHYR_BASE": "${env:HOME}/ncs/zephyr"
+			"NCS_BASE": "/home/stefano/ncs",
+			"ZEPHYR_BASE": "/home/stefano/ncs/zephyr"
 		},
 		"nrf-connect.toolchain.path": "PATH",
+		"nrf-connect.applications": [
+			"${workspaceFolder}/application-green-blink",
+			"${workspaceFolder}/application-test"
+		],
+		"files.associations": {
+			"*.dict": "json",
+			"ixm42xxx.h": "c",
+			"iim42652_setup.h": "c",
+			"variant": "c"
+		},
 	},
 
 }

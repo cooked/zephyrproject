@@ -17,13 +17,13 @@ LOG_MODULE_DECLARE(IXM42XXX, CONFIG_SENSOR_LOG_LEVEL);
 
 
 static const struct device *i2c_dev;
-static const uint16_t *i2c_addr;
+static uint16_t i2c_addr;
 
 int ixm42xxx_i2c_init(const struct device *i2c_device, uint16_t *addr)
 {
 	__ASSERT_NO_MSG(i2c_device);
 	i2c_dev = i2c_device;
-	i2c_addr = addr;
+	i2c_addr = &addr;
 	return 0;
 }
 
@@ -32,7 +32,7 @@ int i2c_reg_read_byte_ixm42xxx(struct device *dev, uint8_t reg_addr, uint8_t *va
 
 	if(i2c_reg_read_byte(i2c_dev, i2c_addr, reg_addr, *value) < 0)
 		return -EIO;
-		
+
 	return 0;
 
 }
@@ -44,7 +44,7 @@ int i2c_reg_read_byte_ixm42xxx(struct device *dev, uint8_t reg_addr, uint8_t *va
 // One buffer is used for TX and RX so you better make it
 // large enough for both operations.
 int i2c_write_read_handler_iim42652(struct device *dev, uint8_t *p_data, uint8_t tx_size, uint8_t rx_size) {
-	struct ixm42xxx_data *dev_data = dev->data;
+	struct iim42652_data *dev_data = dev->data;
 
 	// TODO: addr now retrived as pointer... check if working
 	int err = i2c_write(dev_data->i2c, p_data, tx_size, i2c_addr);
@@ -64,7 +64,7 @@ int i2c_write_read_handler_iim42652(struct device *dev, uint8_t *p_data, uint8_t
 
 
 
-// TODO: understand and implement burst read if needed, ported from elsewhere 
+// TODO: understand and implement burst read if needed, ported from elsewhere
 
 /*static int ixm42xxx_reg_read_i2c(const union bme280_bus *bus, uint8_t start, uint8_t *buf, int size) {
 	return i2c_burst_read_dt(&bus->i2c, start, buf, size);

@@ -37,7 +37,7 @@ enum {
 	ACCEL_FS_2G,
 };
 
-struct ixm42xxx_data {
+struct iim42652_data {
 	// TODO keep one, call it *bus, and generalize all code
 	const struct device *spi;
 	const struct device *i2c;
@@ -48,8 +48,8 @@ struct ixm42xxx_data {
 	int16_t accel_y;
 	int16_t accel_z;
 	uint16_t accel_sensitivity_shift;
-	uint16_t accel_hz;
-	uint16_t accel_sf;
+	//uint16_t accel_hz;
+	//uint16_t accel_sf;
 
 	int16_t temp;
 
@@ -57,8 +57,8 @@ struct ixm42xxx_data {
 	int16_t gyro_y;
 	int16_t gyro_z;
 	uint16_t gyro_sensitivity_x10;
-	uint16_t gyro_hz;
-	uint16_t gyro_sf;
+	//uint16_t gyro_hz;
+	//uint16_t gyro_sf;
 
 	bool accel_en;
 	bool gyro_en;
@@ -79,22 +79,21 @@ struct ixm42xxx_data {
 	struct spi_config spi_cfg;
 };
 
-struct ixm42xxx_config {
-
+struct iim42652_config {
 	// TODO keep one, call it *bus_label, and generalize all code
 	// NEW: extended to support spi and i2c
 	const char *i2c_label;	// one label or the other will be used
-	const char *spi_label;
+	//const char *spi_label;
 	uint16_t addr;			// this is i2c or spi address, depending on sensor selection
 
-	uint32_t frequency;
-	uint32_t slave;
-	uint8_t int_pin;
+	//uint32_t frequency;
+	//uint32_t slave;
+	/*uint8_t int_pin;
 	uint8_t int_flags;
 	const char *int_label;
 	const char *gpio_label;
 	gpio_pin_t gpio_pin;
-	gpio_dt_flags_t gpio_dt_flags;
+	gpio_dt_flags_t gpio_dt_flags;*/
 	uint16_t accel_hz;
 	uint16_t gyro_hz;
 	uint16_t accel_fs;

@@ -18,7 +18,7 @@ LOG_MODULE_DECLARE(IIM42652, CONFIG_SENSOR_LOG_LEVEL);
 
 int iim42652_sensor_init(const struct device *dev)
 {
-	struct ixm42xxx_data *drv_data = dev->data;
+	struct iim42652_data *drv_data = dev->data;
 
 	int result = 0;
 	uint8_t v;
@@ -28,7 +28,7 @@ int iim42652_sensor_init(const struct device *dev)
 	if (i2c_reg_read_byte_ixm42xxx(drv_data->i2c, MPUREG_WHO_AM_I, &v) < 0) {
 		//LOG_ERR("Failed to read chip ID.");
 		return -EIO;
-	}	
+	}
 	//LOG_DBG("WHO AM I : 0x%X", v);
 
 
