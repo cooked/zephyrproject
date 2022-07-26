@@ -1,0 +1,35 @@
+
+&i2c2 {
+	compatible = "nordic,nrf-twim";
+	status = "okay";
+	sda-pin = <11>;
+	scl-pin = <12>;
+
+	// TODO: Switch to I2C_BITRATE_FAST so we get 400 kHz instead of 100 kHz
+	// communication? Look at documentation and power usage...
+	clock-frequency = <I2C_BITRATE_FAST>;
+
+	magnetometer_imu: mlx90393@10 {
+		compatible = "melexis,mlx90393";
+		status = "okay";
+		label = "MLX90393";
+		reg = <0x10>;
+
+		// This defines the GPIO pin which is used for the interrupt
+		interrupt-gpios = <&gpio0 6 (GPIO_ACTIVE_HIGH)>;
+
+		// This defines the GPIO pin which is used for the trigger
+		trigger-gpios = <&gpio0 7 (GPIO_ACTIVE_HIGH)>;
+	};
+
+	accel: iim42652@68 {
+		compatible = "invensense,iim42652";
+		status = "okay";
+		label = "IIM42652";
+		reg = <0x68>;
+
+		// GPIO pin for the interrupt
+		interrupt1-gpios = <&gpio0 8 (GPIO_ACTIVE_HIGH)>;
+		interrupt2-gpios = <&gpio0 9 (GPIO_ACTIVE_HIGH)>;
+	};
+};

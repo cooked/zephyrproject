@@ -1,0 +1,25 @@
+# TODO: Move this to the IIM42652 driver eventually
+description: |
+  DeviceTree binding for the Invensense IIM42652 6-axis acceleromter and
+  gyrometer IMU with temperature sensor.
+compatible: "invensense,iim42652"
+on-bus: i2c
+include: i2c-device.yaml
+
+# TODO: Add actual properties for the magnetomer here...
+properties:
+  interrupt1-gpios:
+    type: phandle-array
+    required: true
+    description: |
+      The INT signal default configuration is active-high. The property value
+      should ensure that the flags properly describe the signal that is
+      presented to the driver.
+
+  interrupt2-gpios:
+    type: phandle-array
+    required: true
+    description: |
+      The INT signal default configuration is active-high. The property value
+      should ensure that the flags properly describe the signal that is
+      presented to the driver.
