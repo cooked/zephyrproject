@@ -93,12 +93,14 @@
 		"nrf-connect.west.env": {
 			"$base": "terminal",
 			"NCS_BASE": "/home/stefano/ncs",
-			"ZEPHYR_BASE": "/home/stefano/ncs/zephyr"
+			"ZEPHYR_BASE": "/home/stefano/ncs/zephyr",
+
+			// enable this to build AC apps locally
+			"BASE_DIR": "/home/stefano/data-node-firmware-2/firmware"
 		},
 		"nrf-connect.applications": [
 			"${workspaceFolder}/application-green-blink",
-			"${workspaceFolder}/application-test",
-			"${workspaceFolder}/application-6dof"
+			"${workspaceFolder:data-node-firmware-2}/firmware/applications/application-6dof"
 		],
 		"files.associations": {
 			"*.dict": "json",
@@ -116,7 +118,10 @@
 			"devicetree.h": "c",
 			"math.h": "c",
 			"gpio.h": "c",
-			"i2c.h": "c"
+			"i2c.h": "c",
+			"ixm42xxx_i2c.h": "c",
+			"ixm42xxx_reg.h": "c",
+			"device.h": "c"
 		},
 	},
 
